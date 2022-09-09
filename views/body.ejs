@@ -1,0 +1,75 @@
+<%- include("header.ejs") -%>
+<div id="navbar">
+    <div id="logo">
+        <img src="../static/logo.png" alt="logo">
+        <span>Schedule Manager</span>
+    </div>
+    <div id="search">
+        <input type="text" id="findTxt" placeholder="Search your note here">
+    </div>
+</div>
+<section>
+    <div id="mainBox">
+        <h1>Welcome To Schedule Manager</h1>
+        <span id="time"></span>
+        <div id="container">
+            <img src="../static/clipboard.png" alt="">
+            <h2>Schedule Your Tasks Here</h2>
+            <form id="inputBox" action="/" method="POST">
+                <textarea id="inputTask" name="taskName" placeholder="Enter your tasks" rows="1"></textarea>
+                <button id="addTask" type="submit">Add Task</button>
+            </form>
+            <h2>Your Tasks</h2>
+            <!-- <div id="num">Total Tasks are <span id="arrLen"></span></div> -->
+            <div id="myTasks">
+            <%    newTask.forEach(function(t){ %>
+                <form action="/delete" method="POST">
+                    <div class="taskBox">
+                        <h4>Task:</h4>
+                        <p><%= t.name + t.time %></p>
+                        <!-- <button id="bookmarkBtn" onclick = "bookmark(${index})">Bookmark</button> -->
+                        <button type="submit" name="del" value="<%= t._id %>">Delete Task</button>
+                    </div>
+                </form>
+            <% }) %>
+            </div>
+            <!-- <div id="lastEle">
+                <form action="/deleteall" method="post">
+                    <button id="delAll" type="submit" name="delall" value="<%= newTask %>">Remove All</button>
+                </form>
+                <button id="sortList">Sort</button>
+            </div> -->
+            <!-- <form action="/update" method="post">
+                <input type="text" name="real" placeholder="previous">
+                <input type="text" name="update" placeholder="new">
+                <button type="submit">Update</button>
+            </form> -->
+        </div>
+    </div>
+</section>
+<footer>
+    <div id="social">
+        <a href="https://github.com/Souvik-Bhattacharya" target="_blank" rel="noopener noreferrer"><img
+                src="../static/github.png" alt="GitHub"></a>
+        <a href="mailto:souvikbh12@gmail.com"><img src="../static/mail.png" alt="Mail"></a>
+    </div>
+    <div id="copy">Schedule Manager &copy; | All rights reserved</div>
+</footer>
+<script>
+    setInterval(() => {
+    document.getElementById('time').innerHTML = new Date();
+    }, 1000);
+    find = document.getElementById("findTxt");
+    find.addEventListener("input", function () {
+        let searchInput = find.value;
+        let fullTask = document.getElementsByClassName("taskBox");
+        Array.from(fullTask).forEach(function (element) {
+            let T = element.getElementsByTagName("p")[0].innerText;
+            if (T.includes(searchInput)) {
+                element.style.backgroundColor = "rgb(92 96 88)";
+            } else {
+                element.style.backgroundColor = "#343638";
+            }
+        });
+    });
+</script> 
