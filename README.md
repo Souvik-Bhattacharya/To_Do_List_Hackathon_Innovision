@@ -5,3 +5,5 @@ The Team members are:
 2. Somtirtha Das - cse2021058 - Email: somtirtha.malda@gmail.com
 3. Rajdeep Mondal - cse2021035 - Email: cse2021035@rcciit.org.in
 4. Anirban Mitra - cse2021046 - Email: mitranabanita44@gmail.com
+The video link is : https://youtu.be/8zssucc7Wh0
+The website link is : https://todolist-hackathon.herokuapp.com/
